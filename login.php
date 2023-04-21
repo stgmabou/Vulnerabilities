@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <?php
-session_start();
-
-// Validate CSRF token
-if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-    // Invalid token, handle error
-    die('Invalid CSRF token');
-}
-
-// Handle login request
-// ...
+	session_start();
+	if (isset($_SESSION['id']))
+	{
+	    header("Location:index.php");
+	}
 ?>
 <html lang="en">
 
@@ -64,11 +59,10 @@ if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_toke
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-					<input type="hidden" name="csrf_token" value="<?php echo htmlentities($_SESSION['csrf_token']); ?>">
                     <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block">
                     <hr>
 
-                  </form>z
+                  </form>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div>
